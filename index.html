@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+     <head>
+          <meta charset="utf-8">
+          <title>Studio Ghibli Quiz</title>
+          <link rel="stylesheet" href="style.css" />
+     </head>
+     <body>
+          <div class="content">
+               <div class="content-inner">
+                    <!-- quiz-intro -->
+                    <div id="quiz-intro" class=" text-center" class="intro-container" >
+                         <h1> So you think you know everything about the Studio Ghibli films, eh?</h1>
+                         <h2> Lets see about that....</h2>
+                         <button type="button" name="button" class="start"> Start Quiz</button>
+                    </div>
+                    <!-- quiz-form -->
+                    <form id="quiz-form"class="" >
+                         <div class="quiz-container">
+                              <p class=" text-center" class="question-container"> This is where the question will be.</p>
+                              <ul class="answers-container" >
+                                   <!-- Answer 1 -->
+                                   <li>
+                                        <input type="radio" name="answer" value="0" id="answer0">
+                                        <label for="answer0"> Answer 1</label>
+                                   </li>
+                                   <!-- Answer 2 -->
+                                   <li>
+                                        <input type="radio" name="answer" value="1" id="answer1">
+                                        <label for="answer1"> Answer 2</label>
+                                   </li>
+                                   <!-- Answer 3 -->
+                                   <li>
+                                        <input type="radio" name="answer" value="2" id="answer2">
+                                        <label for="answer2"> Answer 3</label>
+                                   </li>
+                                   <!-- Answer 4 -->
+                                   <li>
+                                        <input type="radio" name="answer" value="3" id="answer3">
+                                        <label for="answer3"> Answer 4</label>
+                                   </li>
+                              </ul>
+                         </div>
+                         <!-- Submit Button -->
+                         <div class=" text-center">
+                              <button type="button" class="submit-answer-button"> Submit Answer</button>
+                         </div>
+                    </form>
+                    <!-- quiz-done -->
+                    <div id="quiz-done"class="text-center">
+                         <div class="quize-done-message"> You got 12 questions right out of 12.</div>
+                         <button type="button" class="reset"> Want to try again?</button>
+
+                    </div>
+               </div>
+          </div>
+     </body>
+</html>
