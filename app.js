@@ -10,29 +10,34 @@ $(document).ready(function () {
      });
 
      // click next button to move to next question
+      moveToNextQuestion ();
 
+     // Click prev button to go back to the last question
+     previousQuestion();
 
      //Submitting and checking answers
      $(".submit-answer-button").on('click',function() {
           checkAnswer();
-          nextQuestion();
           });
-
-     //Restart Game
 
      //See answers
      $('button.answer-button').on('click',function(event){
+          $('#quiz-right').addClass('hidden');
+          $('#quiz-wrong').addClass('hidden');
+          $('#quiz-form').addClass('hidden');
           $('#quiz-list').removeClass('hidden');
      });
 
      //Play Again
      $('.reset-button').on('click',function(){
-          currentQuestion = 0;
-          questionIndex = 0;
-          score = 0;
+          event.preventDefault();
+          $('#quiz-form').removeClass('hidden');
           $('#quiz-outoro').addClass ('hidden');
           $('#quiz-list').addClass('hidden');
+          $('#quiz-right').addClass('hidden');
+          $('#quiz-wrong').addClass('hidden');
           startGame();
+          nextQuestion();
      });
 
 });
@@ -101,19 +106,6 @@ var questions = [
                          answers:[ 'Crucifer','Calcifer','Calculator','Calcium' ],
                          correctAnswer:1,
                     },
-                    {
-                         qnumber:11,
-                         quest:"In The Wind Rises, why can't Jiro become a pilot?",
-                         answers:[ 'He is blind','He doesn\'t know how to drive one','He doesn\'t have enough money to go to college','He is nearsighted'],
-                         correctAnswer:3,
-                    },
-                    {
-                         qnumber:12,
-                         quest:'Which character from Tales of Earthsea says, "Life without death is not life."',
-                         answers:[ 'Haitaka','Teru','Sparrowhawk','Hare' ],
-                         correctAnswer:0,
-                    }
-
                ];
 
 //Global Variables
@@ -128,6 +120,7 @@ function startGame() {
 	score = 0;
 	questionIndex = 0;
 	getQuestion();
+     console.log("The game has begun.")
  	};
 
 //Get Question
@@ -140,6 +133,16 @@ function getQuestion() {
  	};
 
 //Move to Next Question
+function moveToNextQuestion (){
+     $(".nextQ").on('click',function() {
+     	nextQuestion();
+     	$('input:radio[name=radio]').attr('checked',false);
+          $('#quiz-right').addClass('hidden');
+          $('#quiz-wrong').addClass('hidden');
+     	});
+}
+
+
 function nextQuestion() {
 	curQuestion++;
 	questionIndex++;
@@ -148,13 +151,48 @@ function nextQuestion() {
 	};
 
 
+//Move to previous question
+
+function previousQuestion(){
+     $('.prevQ').on('click', function(){
+          curQuestion--;
+     	questionIndex--;
+     	getQuestion();
+          $('#currentQ').text(curQuestion);
+          $('#quiz-right').addClass('hidden');
+          $('#quiz-wrong').addClass('hidden');
+     })
+}
+
+//Progress bar rendering
+function runProgressbar(){
+     var totalQ= questions.length;
+     var barWidth= $('#progress').width();
+     var prog= barWidth/totalQ;
+     var currentValue = questionIndex;
+
+     $('#progress').css('width',prog);
+
+     $('.nextQ').click(function() {
+          currentValue++;
+          $('#progress').css('width', prog * currentValue);
+
+     });
+
+     $('.prevQ').click(function() {
+          currentValue--;
+          $('#progress').css('width', prog * currentValue);
+     });
+}
+
 //Question Check
 function checkAnswer() {
      var radioValue = false;
-     var userChoice = $( ":radio" );
+     var userChoice = $(':radio'); //$("input:radio:checked").val();
      for (var i = 0; i < userChoice.length; i++) {
           if(userChoice[i].checked) {
-               radioValue = userChoice[i].value;
+               radioValue = userChoice[i].checked;
+               console.log("The index value chosen is: " + radioValue);
           }
      } //NOT DETECTING MY SELECTED RADIO BUTTON!!
 
@@ -169,11 +207,11 @@ function checkAnswer() {
      if (radioValue === questions[questionIndex].correctAnswer) {
           score++;
           console.log("Question " + curQuestion + " was answered correctly");
-          //unhide correct-answer-window
+          $('#quiz-right').removeClass('hidden');
      // If wrong
      } else {
           console.log("Question " + curQuestion + " was answered wrong");
-          //unhide wrong-answer-window
+          $('#quiz-wrong').removeClass('hidden');
      }
 
      if (questions.length === questionIndex + 1) {
@@ -190,8 +228,8 @@ THE FOLLOWING CODE IS STILL IN PROGRESS TO
 -I NEED TO START LOOKING INTO HOW TO GET THE PROGRESS BAR TO WORK BASED ON PROGRESS.
 
 -CREATE LOGICAL ARGUMENTS FOR RIGHT AND WRONG ANSWERS
-     I WANT THERE TO BE 1)A POP UP WINDOW STATING IF ANSWER IF RIGHT WITH AN IMGAGE (HAPPY MAIN CHARACTERS) FROM FILMS
-                        2) ANOTHER WINDOW WITH A SCARY IMAGE (MONSTERS) FROM THE FILM IF THE ANSWERS ARE WRONG
+     I WANT THERE TO BE 1)A IMAGE STATING THAT THE CORRECT ANSWER WAS SELECTED
+                        2)AN IMAGE STATING THAT THE WRONG ANSWER WAS SELECTED
      THERE ALSO MUST BE A CLOSE WINDOW BUTTON (MAKE .hidden) TO GO BACK TO THE QUIZ
 
 */

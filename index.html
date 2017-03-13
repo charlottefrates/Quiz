@@ -19,6 +19,14 @@
                          <button type="button" class="start-button"> Let's play!</button>
                     </div>
 
+                    <!-- quiz-status -->
+                    <div id="quiz-status"class=" text-center hidden">
+                         <p> Question <span id="currentQ">1</span> of <span class="totalQ">10<span> </p>
+                         <div id="progress-container" class="">
+                              <span id="progress"></span>
+                         </div>
+                    </div>
+
                     <!-- quiz-form -->
                     <form id="quiz-form" class="hidden">
                          <div class="quiz-container">
@@ -31,42 +39,49 @@
                                    </li>
                                    <!-- Answer 2 -->
                                    <li>
-                                        <input type="radio" name="answer" value="0" >
+                                        <input type="radio" name="answer" value="1" >
                                         <label id="choice2"> Answer 2</label>
                                    </li>
                                    <!-- Answer 3 -->
                                    <li>
-                                        <input type="radio" name="answer" value="0" >
+                                        <input type="radio" name="answer" value="2" >
                                         <label id="choice3"> Answer 3</label>
                                    </li>
                                    <!-- Answer 4 -->
                                    <li>
-                                        <input type="radio" name="answer" value="0" >
+                                        <input type="radio" name="answer" value="3" >
                                         <label id="choice4"> Answer 4</label>
                                    </li>
                               </ul>
                          </div>
                     <!-- Submit Button -->
-                         <div class=" text-center">
-                              <button type="button" class="submit-answer-button"> Submit Answer</button>
+                         <div class="text-center">
+                              <button type="button" class="prevQ"> &#8592 </button>
+                              <button type="button" class="submit-answer-button"> Check Answer</button>
+                              <button type="button" class="nextQ"> &#8594 </button>
+
                          </div>
                     </form>
 
-                    <!-- quiz-status -->
-                    <div id="quiz-status"class=" text-center hidden">
-                         <p> Question <span id="currentQ">1</span> of <span class="totalQ">12<span> </p>
-                         <div id="progress-container" class="">
-                              <span></span>
-                         </div>
+                    <!-- correct-answer-window -->
+                    <div id="quiz-right"class="text-center hidden">
+                         <h1> Hooray, that's correct!.</h1>
+                         <img src="images/studioghibli_spiritgod.jpg" alt="">
+                         <h3> "Once you do something,you never forget." Spirited Away</h3>
+
                     </div>
 
-                    <!-- correct-answer-window -->
-
                     <!-- wrong-answer-window -->
+                    <div id="quiz-wrong"class="text-center hidden ">
+                         <h1> Sorry, your wrong.</h1>
+                         <img src="images/studioghibli_calcipher.jpg" alt="">
+                         <h3> "You cannot change fate. However, you can rise to meet it, if you so choose." -Hii-sama Princess Mononoke</h3>
+                    </div>
+
 
                     <!-- quiz-done -->
                     <div id="quiz-outoro"class="text-center hidden">
-                         <div class="quize-outoro-message"> You got <span id="correctA">12</span> questions right out of <span class="totalQ">12<span>.</div>
+                         <div class="quize-outoro-message"> You got <span id="correctA">12</span> questions right out of <span class="totalQ">10<span>.</div>
                          <div class="list">
                               <p></p>
                          </div>
@@ -96,10 +111,6 @@
                          <p> A clothespin.</p>
                          <h3> Question 10: <br>What is the flaming creature's name in 'Howl's Moving Castle?'</h2>
                          <p> His name was Calcifer.</p>
-                         <h3> Question 11: <br>In The Wind Rises, why can't Jiro become a pilot?</h2>
-                         <p> His nearsightedness was the main cause.</p>
-                         <h3> Question 12: <br>Which character from Tales of Earthsea says, "Life without death is not life."</h2>
-                         <p> Haitaka.</p>
                     </div>
                </div>
           </div>
