@@ -16,13 +16,13 @@
                     <div id="quiz-intro" class=" text-center " class="intro-container" >
                          <h1> So you think you know everything about the Studio Ghibli films, eh?</h1>
                          <h2> Lets see about that....</h2>
-                         <button type="button" class="start-button"> Start Quiz</button>
+                         <button type="button" class="start-button"> Let's play!</button>
                     </div>
 
                     <!-- quiz-form -->
                     <form id="quiz-form" class="hidden">
                          <div class="quiz-container">
-                              <p class=" text-center" id="questions"> This is my question. </p>
+                              <p id="questions" class=" text-center" > This is my question. </p>
                               <ul class="answers-container" >
                                    <!-- Answer 1 -->
                                    <li>
@@ -46,20 +46,23 @@
                                    </li>
                               </ul>
                          </div>
-                         <!-- Submit Button -->
+                    <!-- Submit Button -->
                          <div class=" text-center">
                               <button type="button" class="submit-answer-button"> Submit Answer</button>
-                              <button type="button" class="nextQ"> Next Question</button>
                          </div>
                     </form>
 
                     <!-- quiz-status -->
                     <div id="quiz-status"class=" text-center hidden">
                          <p> Question <span id="currentQ">1</span> of <span class="totalQ">12<span> </p>
-                         <div id="progress-container">
+                         <div id="progress-container" class="">
                               <span></span>
                          </div>
                     </div>
+
+                    <!-- correct-answer-window -->
+
+                    <!-- wrong-answer-window -->
 
                     <!-- quiz-done -->
                     <div id="quiz-outoro"class="text-center hidden">
@@ -68,8 +71,36 @@
                               <p></p>
                          </div>
                          <button type="button" class="reset-button"> Want to try again?</button>
+                         <button type="button" class="answer-button"> See Answers Here </button>
                     </div>
 
+                    <!-- Question-answer-list -->
+                    <div id="quiz-list"class="hidden">
+                         <h3> Question 1: <br>In 'Nausicaa of the Valley of the Wind,' what threatens the existence of humans? </h2>
+                         <p> The toxic jungle threatens the existence of humans.</p>
+                         <h3> Question 2: <br>How do Mei, Satsuki and their father make the sootballs leave in 'My Neighbor Totoro'? </h2>
+                         <p> They scream.</p>
+                         <h3> Question 3: <br>What animal do Chirhiro's parents both get turned into in 'Spirited Away'? </h2>
+                         <p> They become pigs.</p>
+                         <h3> Question 4: <br>What is Kiki's cat named in 'Kiki's Delivery Service'? </h2>
+                         <p> Jiji</p>
+                         <h3> Question 5: <br>What natural disaster happened during 'Ponyo on the Cliff by the Sea'? </h2>
+                         <p> A Tsunami occurs and floods everything.</p>
+                         <h3> Question 6: <br>What were the pirates trying to steal from Sheeta in 'Laputa: Castle in the Sky'? </h2>
+                         <p> They were after her magical necklace.</p>
+                         <h3> Question 7: <br>Where was Ashitaka's infection spreading from in 'Princess Mononoke'? </h2>
+                         <p> Ashitaka's arm was infected.</p>
+                         <h3> Question 8: <br>What color did Nausicaa's dress change in 'Nausicaa of the Valley of the Wind'? </h2>
+                         <p> It turned blue.</p>
+                         <h3> Question 9: <br>What does Arietty use to hold her hair back in 'The Secret World of Arietty'?</h2>
+                         <p> A clothespin.</p>
+                         <h3> Question 10: <br>What is the flaming creature's name in 'Howl's Moving Castle?'</h2>
+                         <p> His name was Calcifer.</p>
+                         <h3> Question 11: <br>In The Wind Rises, why can't Jiro become a pilot?</h2>
+                         <p> His nearsightedness was the main cause.</p>
+                         <h3> Question 12: <br>Which character from Tales of Earthsea says, "Life without death is not life."</h2>
+                         <p> Haitaka.</p>
+                    </div>
                </div>
           </div>
           <!-- link to jquery -->

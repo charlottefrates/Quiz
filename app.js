@@ -10,10 +10,34 @@ $(document).ready(function () {
      });
 
      // click next button to move to next question
-     moveToNextQuestion ();
 
+
+     //Submitting and checking answers
+     $(".submit-answer-button").on('click',function() {
+          checkAnswer();
+          nextQuestion();
+          });
+
+     //Restart Game
+
+     //See answers
+     $('button.answer-button').on('click',function(event){
+          $('#quiz-list').removeClass('hidden');
+     });
+
+     //Play Again
+     $('.reset-button').on('click',function(){
+          currentQuestion = 0;
+          questionIndex = 0;
+          score = 0;
+          $('#quiz-outoro').addClass ('hidden');
+          $('#quiz-list').addClass('hidden');
+          startGame();
+     });
 
 });
+
+
 
 //state
 var questions = [
@@ -21,13 +45,13 @@ var questions = [
                          qnumber:1,
                          quest:"'In Nausicaa of the Valley of the Wind,' what threatens the existence of humans?",
                          answers:[ 'Nausicaa','Erosion','The toxic jungle','The dragons' ],
-                         correctAnswer:3,
+                         correctAnswer:2,
                     },
                     {
                          qnumber:2,
                          quest:"How do Mei, Satsuki and their father make the sootballs leave in 'My Neighbor Totoro'?",
                          answers:[ 'Crying','Screaming','Laughing','Jumping'],
-                         correctAnswer:2,
+                         correctAnswer:1,
                     },
                     {
                          qnumber:3,
@@ -116,13 +140,6 @@ function getQuestion() {
  	};
 
 //Move to Next Question
-function moveToNextQuestion (){
-      $(".nextQ").on('click',function() {
-     	nextQuestion();
-     	$('input:radio[name=radio]').attr('checked',false);
-     	});
-}
-
 function nextQuestion() {
 	curQuestion++;
 	questionIndex++;
@@ -130,6 +147,40 @@ function nextQuestion() {
      $('#currentQ').text(curQuestion);
 	};
 
+
+//Question Check
+function checkAnswer() {
+     var radioValue = false;
+     var userChoice = $( ":radio" );
+     for (var i = 0; i < userChoice.length; i++) {
+          if(userChoice[i].checked) {
+               radioValue = userChoice[i].value;
+          }
+     } //NOT DETECTING MY SELECTED RADIO BUTTON!!
+
+
+     //Check that user selected a choice
+     if (radioValue === false) {
+          alert("Please select an answer");
+          return;
+     }
+
+     // If correct  **** NOT WORKING***
+     if (radioValue === questions[questionIndex].correctAnswer) {
+          score++;
+          console.log("Question " + curQuestion + " was answered correctly");
+          //unhide correct-answer-window
+     // If wrong
+     } else {
+          console.log("Question " + curQuestion + " was answered wrong");
+          //unhide wrong-answer-window
+     }
+
+     if (questions.length === questionIndex + 1) {
+               $('#correctA').text(score);
+			$("#quiz-outoro").removeClass("hidden");
+		}
+	}
 
 
 /*
@@ -142,43 +193,5 @@ THE FOLLOWING CODE IS STILL IN PROGRESS TO
      I WANT THERE TO BE 1)A POP UP WINDOW STATING IF ANSWER IF RIGHT WITH AN IMGAGE (HAPPY MAIN CHARACTERS) FROM FILMS
                         2) ANOTHER WINDOW WITH A SCARY IMAGE (MONSTERS) FROM THE FILM IF THE ANSWERS ARE WRONG
      THERE ALSO MUST BE A CLOSE WINDOW BUTTON (MAKE .hidden) TO GO BACK TO THE QUIZ
-
-
-//Check Answer function
-function checkAnswer() {
-     var radioValue = false;
-     var userChoice = document.getElementsByName("radio"); ---> Look up jquery syntax for this
-          for (var i = 0; i < userChoice.length; i++) {
-          	if(userChoice[i].checked) {
-          		radioValue = userChoice[i].value;
-          		}
-          };
-
-     };
-
-// If correct
-     var resultClass;
-     if (radioValue === questions.questions.answer) {
-          score++;
-          ---- bring correct answer container up. remove hidden class. add correct z index----
-     }
-// If wrong
-      else {
-          ---- bring correct wrong container up. remove hidden class. add correct z index----
-     } ;
-
-//Check Answer
-$(".submit-answer-button").click(,function() {
-     checkAnswer();
-     });
-
-
-
-//Check that user selected a choice
-if (radioValue === false) {
-     alert("Please select an answer");
-     return;
-     };
-
 
 */
