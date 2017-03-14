@@ -1,7 +1,7 @@
 //Page Load Event Listeners
 $(document).ready(function () {
 
-     //start page button --> hides quiz-intro and starts quiz-form
+     //start page button
      $('button.start-button').on('click',function(event){
           $('#quiz-intro').addClass('hidden');
           $('#quiz-form').removeClass('hidden');
@@ -11,6 +11,9 @@ $(document).ready(function () {
 
      // click next button to move to next question
       moveToNextQuestion ();
+
+     //Progress Bar loading
+     runProgressbar();
 
      // Click prev button to go back to the last question
      previousQuestion();
@@ -25,12 +28,14 @@ $(document).ready(function () {
           $('#quiz-right').addClass('hidden');
           $('#quiz-wrong').addClass('hidden');
           $('#quiz-form').addClass('hidden');
+          $('#quiz-status').addClass('hidden');
           $('#quiz-list').removeClass('hidden');
      });
 
      //Play Again
      $('.reset-button').on('click',function(){
           event.preventDefault();
+          $('#quiz-status').removeClass('hidden');
           $('#quiz-form').removeClass('hidden');
           $('#quiz-outoro').addClass ('hidden');
           $('#quiz-list').addClass('hidden');
@@ -106,9 +111,22 @@ var questions = [
                          answers:[ 'Crucifer','Calcifer','Calculator','Calcium' ],
                          correctAnswer:1,
                     },
+                    {
+                        qnumber:11,
+                        quest:"In The Wind Rises, why can't Jiro become a pilot?",
+                        answers:[ 'He is blind','He doesn\'t know how to drive one','He doesn\'t have enough money to go to college','He is nearsighted'],
+                        correctAnswer:3,
+                   },
+                   {
+                        qnumber:12,
+                        quest:'Which character from Tales of Earthsea says, "Life without death is not life."',
+                        answers:[ 'Haitaka','Teru','Sparrowhawk','Hare' ],
+                        correctAnswer:0,
+                   }
                ];
 
 //Global Variables
+var totalQuestions = questions.length;
 var currentQuestion = 0;
 var questionIndex = 0;
 var score = 0;
@@ -148,6 +166,7 @@ function nextQuestion() {
 	questionIndex++;
 	getQuestion();
      $('#currentQ').text(curQuestion);
+     $('.totalQ').text(totalQuestions);
 	};
 
 
@@ -159,6 +178,7 @@ function previousQuestion(){
      	questionIndex--;
      	getQuestion();
           $('#currentQ').text(curQuestion);
+          $('.totalQ').text(totalQuestions);
           $('#quiz-right').addClass('hidden');
           $('#quiz-wrong').addClass('hidden');
      })
@@ -166,23 +186,15 @@ function previousQuestion(){
 
 //Progress bar rendering
 function runProgressbar(){
-     var totalQ= questions.length;
-     var barWidth= $('#progress').width();
-     var prog= barWidth/totalQ;
-     var currentValue = questionIndex;
+     var totalQuestions = 11;
+     var currentQuestion = 0;
+     var progressbar = $("#progressbar");
 
-     $('#progress').css('width',prog);
-
-     $('.nextQ').click(function() {
-          currentValue++;
-          $('#progress').css('width', prog * currentValue);
-
-     });
-
-     $('.prevQ').click(function() {
-          currentValue--;
-          $('#progress').css('width', prog * currentValue);
-     });
+$(".nextQ").on("click", function(){
+  if (currentQuestion >= totalQuestions){ return; }
+  currentQuestion++;
+  progressbar.css("width", Math.round(100 * currentQuestion / totalQuestions) + "%");
+});
 }
 
 //Question Check
@@ -225,11 +237,8 @@ function checkAnswer() {
 
 THE FOLLOWING CODE IS STILL IN PROGRESS TO
 
--I NEED TO START LOOKING INTO HOW TO GET THE PROGRESS BAR TO WORK BASED ON PROGRESS.
+-I NEED TO START LOOKING INTO HOW TO GET THE PROGRESS BAR TO WORK BASED ON current question status.
 
--CREATE LOGICAL ARGUMENTS FOR RIGHT AND WRONG ANSWERS
-     I WANT THERE TO BE 1)A IMAGE STATING THAT THE CORRECT ANSWER WAS SELECTED
-                        2)AN IMAGE STATING THAT THE WRONG ANSWER WAS SELECTED
-     THERE ALSO MUST BE A CLOSE WINDOW BUTTON (MAKE .hidden) TO GO BACK TO THE QUIZ
+-BUILD UPON LOGICAL ARGUMENTS FOR RIGHT AND WRONG ANSWERS
 
 */
