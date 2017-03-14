@@ -31,7 +31,13 @@
 #quiz-wrong{
 	border-style: double;
 	padding: 20px;
-	margin: 10px;	
+	margin: 10px;
+}
+
+#quiz-right{
+	border-style: double;
+	padding: 20px;
+	margin: 10px;
 }
 
 #progress-container{

@@ -13,7 +13,8 @@ $(document).ready(function () {
       moveToNextQuestion ();
 
      //Progress Bar loading
-     runProgressbar();
+     runProgressbarforward();
+     runProgressbarbackward()
 
      // Click prev button to go back to the last question
      previousQuestion();
@@ -185,7 +186,7 @@ function previousQuestion(){
 }
 
 //Progress bar rendering
-function runProgressbar(){
+function runProgressbarforward(){
      var totalQuestions = 11;
      var currentQuestion = 0;
      var progressbar = $("#progressbar");
@@ -193,6 +194,18 @@ function runProgressbar(){
 $(".nextQ").on("click", function(){
   if (currentQuestion >= totalQuestions){ return; }
   currentQuestion++;
+  progressbar.css("width", Math.round(100 * currentQuestion / totalQuestions) + "%");
+});
+}
+
+function runProgressbarbackward(){
+     var totalQuestions = 11;
+     var currentQuestion = 0;
+     var progressbar = $("#progressbar");
+
+$(".prevQ").on("click", function(){
+  if (currentQuestion >= totalQuestions){ return; }
+  currentQuestion--;
   progressbar.css("width", Math.round(100 * currentQuestion / totalQuestions) + "%");
 });
 }
