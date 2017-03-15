@@ -1,15 +1,12 @@
-#image-theme{
-	padding:20px;
-	margin: 10px;
-}
-
 #quiz-intro{
+	background-color:white;
 	border-style: double;
-	padding: 2px;
+	padding: 20px;
 	margin: 10px;
 }
 
 #quiz-form{
+	background-color:white;
 	border-style: double;
 	padding: 20px;
 	margin: 10px;
@@ -17,12 +14,14 @@
 }
 
 #quiz-status{
+	background-color:white;
 	border-style: double;
 	padding: 20px;
 	margin: 10px;
 }
 
 #quiz-outoro{
+	background-color:white;
 	border-style: double;
 	padding: 20px;
 	margin: 10px;
@@ -41,6 +40,7 @@
 }
 
 #progress-container{
+	background-color:white;
 	background:grey;
 	width: 100%;
 	overflow: hidden;
@@ -121,10 +121,17 @@ button.nextQ {
 .content {
 	position: relative;
 	width: 50%;
-	padding: 20px;
+	padding-left:auto;
+	padding-right:auto;
 	margin: 50px auto;
 	overflow: hidden;
 }
+
+#header-content {
+	text-align: center;
+	margin-left: auto;
+}
+
 
 .text-center {
 	text-align: center;

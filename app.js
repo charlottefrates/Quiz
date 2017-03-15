@@ -6,6 +6,7 @@ $(document).ready(function () {
           $('#quiz-intro').addClass('hidden');
           $('#quiz-form').removeClass('hidden');
           $('#quiz-status').removeClass('hidden');
+          $('#header-content').addClass('hidden');
           startGame();
      });
 
@@ -35,7 +36,10 @@ $(document).ready(function () {
 
      //Play Again
      $('.reset-button').on('click',function(){
-          event.preventDefault();
+          totalQuestions = questions.length;
+          curQuestion = 0;
+          questionIndex = 0;
+          score = 0;
           $('#quiz-status').removeClass('hidden');
           $('#quiz-form').removeClass('hidden');
           $('#quiz-outoro').addClass ('hidden');
@@ -128,16 +132,16 @@ var questions = [
 
 //Global Variables
 var totalQuestions = questions.length;
-var currentQuestion = 0;
+var curQuestion = 0;
 var questionIndex = 0;
 var score = 0;
 
 
 //Starting Game
 function startGame() {
-     curQuestion = 1;
-	score = 0;
-	questionIndex = 0;
+     curQuestion++;
+     questionIndex = 0;
+     score = 0;
 	getQuestion();
      console.log("The game has begun.")
  	};
@@ -154,17 +158,19 @@ function getQuestion() {
 //Move to Next Question
 function moveToNextQuestion (){
      $(".nextQ").on('click',function() {
+          event.preventDefault(); //This stops the form from submitting
      	nextQuestion();
      	$('input:radio[name=radio]').attr('checked',false);
           $('#quiz-right').addClass('hidden');
           $('#quiz-wrong').addClass('hidden');
+          runProgressbarforward()
      	});
 }
 
 
 function nextQuestion() {
-	curQuestion++;
-	questionIndex++;
+     curQuestion++;
+     questionIndex++;
 	getQuestion();
      $('#currentQ').text(curQuestion);
      $('.totalQ').text(totalQuestions);
@@ -175,6 +181,7 @@ function nextQuestion() {
 
 function previousQuestion(){
      $('.prevQ').on('click', function(){
+          event.preventDefault(); //This stops the form from submitting
           curQuestion--;
      	questionIndex--;
      	getQuestion();
@@ -182,76 +189,44 @@ function previousQuestion(){
           $('.totalQ').text(totalQuestions);
           $('#quiz-right').addClass('hidden');
           $('#quiz-wrong').addClass('hidden');
+          runProgressbarbackward()
      })
 }
 
 //Progress bar rendering
 function runProgressbarforward(){
-     var totalQuestions = 11;
-     var currentQuestion = 0;
      var progressbar = $("#progressbar");
+     progressbar.css("width", Math.round(100 * curQuestion / totalQuestions + 1) + "%");
+};
 
-$(".nextQ").on("click", function(){
-  if (currentQuestion >= totalQuestions){ return; }
-  currentQuestion++;
-  progressbar.css("width", Math.round(100 * currentQuestion / totalQuestions) + "%");
-});
-}
 
 function runProgressbarbackward(){
-     var totalQuestions = 11;
-     var currentQuestion = 0;
      var progressbar = $("#progressbar");
+     progressbar.css("width", Math.round(100 * curQuestion / totalQuestions + 1) + "%");
+};
 
-$(".prevQ").on("click", function(){
-  if (currentQuestion >= totalQuestions){ return; }
-  currentQuestion--;
-  progressbar.css("width", Math.round(100 * currentQuestion / totalQuestions) + "%");
-});
-}
 
 //Question Check
 function checkAnswer() {
-     var radioValue = false;
-     var userChoice = $(':radio'); //$("input:radio:checked").val();
-     for (var i = 0; i < userChoice.length; i++) {
-          if(userChoice[i].checked) {
-               radioValue = userChoice[i].checked;
-               console.log("The index value chosen is: " + radioValue);
-          }
-     } //NOT DETECTING MY SELECTED RADIO BUTTON!!
+     var answer = $("input[type='radio']:checked").val();
 
-
-     //Check that user selected a choice
-     if (radioValue === false) {
-          alert("Please select an answer");
-          return;
-     }
-
-     // If correct  **** NOT WORKING***
-     if (radioValue === questions[questionIndex].correctAnswer) {
+     if (answer == questions[questionIndex].correctAnswer) {
           score++;
+          //$('#quiz-right').removeClass('hidden')
           console.log("Question " + curQuestion + " was answered correctly");
-          $('#quiz-right').removeClass('hidden');
-     // If wrong
-     } else {
-          console.log("Question " + curQuestion + " was answered wrong");
-          $('#quiz-wrong').removeClass('hidden');
-     }
+            ;
+        } else {
+            //$('#quiz-wrong').removeClass('hidden');
+            alert('Sorry your wrong!');
+             console.log("Question " + curQuestion + " was answered wrong");
+               };
+
+     if (!answer){
+          alert('Please select an answer');
+                   };
 
      if (questions.length === questionIndex + 1) {
                $('#correctA').text(score);
-			$("#quiz-outoro").removeClass("hidden");
-		}
+               $("#quiz-outoro").removeClass("hidden");
+              }
 	}
-
-
-/*
-
-THE FOLLOWING CODE IS STILL IN PROGRESS TO
-
--I NEED TO START LOOKING INTO HOW TO GET THE PROGRESS BAR TO WORK BASED ON current question status.
-
--BUILD UPON LOGICAL ARGUMENTS FOR RIGHT AND WRONG ANSWERS
-
-*/
