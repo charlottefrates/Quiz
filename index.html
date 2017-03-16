@@ -5,7 +5,7 @@
           <title>Studio Ghibli Quiz</title>
           <link rel="stylesheet" href="style.css" />
      </head>
-     <body id="main-page">
+     <body id="main-page" class="backgroundstart">
           <div class="content">
                     <div id="header-content" class=" text-center ">
                          <!-- Image Theme -->
@@ -25,7 +25,6 @@
                               <span id="progressbar" style="width: 0%"></span>
                          </div>
                     </div>
-
                     <!-- quiz-form -->
                     <form id="quiz-form" class="hidden">
                          <div class="quiz-container">
@@ -54,30 +53,22 @@
                               </ul>
                          </div>
                     <!-- Submit Button -->
-                         <div class="text-center">
+                         <div id="buttons"class="text-center">
                               <button type="button" class="prevQ"> &#8592 </button>
-                              <button type="button" class="submit-answer-button"> Check Answer</button>
+                              <button type="button" class="submit-answer-button"> Submit Answer</button>
                               <button type="button" class="nextQ"> &#8594 </button>
 
                          </div>
                     </form>
-
                     <!-- correct-answer-window -->
                     <div id="quiz-right"class="text-center hidden">
-                         <h1> Hooray, that's correct!.</h1>
-                         <img src="images/studioghibli_spiritgod.jpg" alt="">
-                         <h3> "Once you do something,you never forget." Spirited Away</h3>
-
+                         <h3> Hooray, that's correct!</h3>
                     </div>
 
                     <!-- wrong-answer-window -->
                     <div id="quiz-wrong"class="text-center hidden ">
-                         <h1> Sorry, you're wrong.</h1>
-                         <img src="images/studioghibli_calcipher.jpg" alt="">
-                         <h3> "You cannot change fate. However, you can rise to meet it, if you so choose." -Hii-sama Princess Mononoke</h3>
+                         <h3> Sorry, you're wrong.</h3>
                     </div>
-
-
                     <!-- quiz-done -->
                     <div id="quiz-outoro"class="text-center hidden">
                          <div class="quize-outoro-message"> You got <span id="correctA">12</span> questions correct out of <span class="totalQ">10<span>.</div>

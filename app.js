@@ -7,25 +7,29 @@ $(document).ready(function () {
           $('#quiz-form').removeClass('hidden');
           $('#quiz-status').removeClass('hidden');
           $('#header-content').addClass('hidden');
+          $('body').removeClass('backgroundstart');
+          $('body').addClass('background');//first background change
           startGame();
      });
 
      // click next button to move to next question
       moveToNextQuestion ();
 
+      // Click prev button to go back to the last question
+     previousQuestion();
+
      //Progress Bar loading
      runProgressbarforward();
      runProgressbarbackward()
 
-     // Click prev button to go back to the last question
-     previousQuestion();
 
      //Submitting and checking answers
      $(".submit-answer-button").on('click',function() {
+          $(this).attr("disabled", true);
           checkAnswer();
           });
 
-     //See answers
+     //Submit answers
      $('button.answer-button').on('click',function(event){
           $('#quiz-right').addClass('hidden');
           $('#quiz-wrong').addClass('hidden');
@@ -144,6 +148,7 @@ function startGame() {
      score = 0;
 	getQuestion();
      console.log("The game has begun.")
+     //$('#background').removeClass('hidden');
  	};
 
 //Get Question
@@ -155,33 +160,37 @@ function getQuestion() {
 	$("#choice4").text(questions[questionIndex].answers[3]);
  	};
 
-//Move to Next Question
+//Move to Next Questions
 function moveToNextQuestion (){
      $(".nextQ").on('click',function() {
+          $(".submit-answer-button").attr("disabled", false);// turns submit button back on
           event.preventDefault(); //This stops the form from submitting
-     	nextQuestion();
-     	$('input:radio[name=radio]').attr('checked',false);
+          $('input[type=radio]').attr('checked',false); // this clears previously selected answer
           $('#quiz-right').addClass('hidden');
           $('#quiz-wrong').addClass('hidden');
-          runProgressbarforward()
+          nextQuestion();
+          runProgressbarforward();
+          changeBackground();
      	});
 }
 
 
 function nextQuestion() {
-     curQuestion++;
-     questionIndex++;
-	getQuestion();
-     $('#currentQ').text(curQuestion);
-     $('.totalQ').text(totalQuestions);
+          curQuestion++;
+          questionIndex++;
+     	getQuestion();
+          $('#currentQ').text(curQuestion);
+          $('.totalQ').text(totalQuestions);
+
 	};
 
 
-//Move to previous question
+//Move to previous questions
 
 function previousQuestion(){
      $('.prevQ').on('click', function(){
-          event.preventDefault(); //This stops the form from submitting
+          event.preventDefault();
+          $(".submit-answer-button").attr("disabled", true);
           curQuestion--;
      	questionIndex--;
      	getQuestion();
@@ -209,24 +218,51 @@ function runProgressbarbackward(){
 //Question Check
 function checkAnswer() {
      var answer = $("input[type='radio']:checked").val();
-
-     if (answer == questions[questionIndex].correctAnswer) {
-          score++;
-          //$('#quiz-right').removeClass('hidden')
-          console.log("Question " + curQuestion + " was answered correctly");
-            ;
-        } else {
-            //$('#quiz-wrong').removeClass('hidden');
-            alert('Sorry your wrong!');
-             console.log("Question " + curQuestion + " was answered wrong");
-               };
-
      if (!answer){
           alert('Please select an answer');
                    };
+     if (answer == questions[questionIndex].correctAnswer) {
+          score++;
+          $('#quiz-right').removeClass('hidden');
+          $('#quiz-wrong').addClass('hidden');
+          console.log("Question " + curQuestion + " was answered correctly");
+            ;
+        } else {
+            $('#quiz-wrong').removeClass('hidden');
+             console.log("Question " + curQuestion + " was answered wrong");
+               };
 
      if (questions.length === questionIndex + 1) {
                $('#correctA').text(score);
                $("#quiz-outoro").removeClass("hidden");
               }
 	}
+
+//Background style change
+
+function changeBackground(){
+     if (curQuestion===2){
+          $('body').removeClass('background');
+          $('body').addClass('backgroundtwo');
+     };
+     if (curQuestion===4){
+          $('body').removeClass('backgroundtwo');
+          $('body').addClass('backgroundthree');
+     }
+     if (curQuestion===6){
+          $('body').removeClass('backgroundthree');
+          $('body').addClass('backgroundfour');
+     }
+     if (curQuestion===8){
+          $('body').removeClass('backgroundfour');
+          $('body').addClass('backgroundfive');
+     }
+     if (curQuestion===10){
+          $('body').removeClass('backgroundfive');
+          $('body').addClass('backgroundsix');
+     }
+     if (curQuestion===12){
+          $('body').removeClass('backgroundsix');
+          $('body').addClass('backgroundfinal');
+     }
+}

@@ -5,35 +5,17 @@
 	margin: 10px;
 }
 
-#quiz-form{
+#header-content {
 	background-color:white;
 	border-style: double;
-	padding: 20px;
-	margin: 10px;
-	font-size: 14pt;
+	text-align: center;
+	margin-left: auto;
 }
+
+/*---------Quiz Tracker------*/
 
 #quiz-status{
 	background-color:white;
-	border-style: double;
-	padding: 20px;
-	margin: 10px;
-}
-
-#quiz-outoro{
-	background-color:white;
-	border-style: double;
-	padding: 20px;
-	margin: 10px;
-}
-
-#quiz-wrong{
-	border-style: double;
-	padding: 20px;
-	margin: 10px;
-}
-
-#quiz-right{
 	border-style: double;
 	padding: 20px;
 	margin: 10px;
@@ -57,12 +39,110 @@
 	-webkit-border-radiun: 5px;
 }
 
-#quiz-list{
+/*---------main quiz data------*/
+
+#quiz-form{
+	background-color:white;
+	border-style: double;
+	padding: 50px;
+	margin: 10px;
+	font-size: 14pt;
+}
+
+#questions{
+	font-weight: bold;
+}
+
+
+
+#buttons{
+	padding-top: 30px;
+}
+
+/*---------Answer Submission Message------*/
+
+#quiz-right{
+	background-color: white;
+	border-style: double;
+	padding: 10px;
+	margin: 10px;
+}
+
+#quiz-wrong{
+	background-color: white;
+	border-style: double;
+	padding: 10px;
+	margin: 10px;
+}
+
+/*---------Quiz tally and final list answer------*/
+
+#quiz-outoro{
+	background-color:white;
 	border-style: double;
 	padding: 20px;
 	margin: 10px;
 }
 
+#quiz-list{
+	background-color: white;
+	border-style: double;
+	padding: 20px;
+	margin: 10px;
+}
+
+/*---------Background image classes------*/
+
+.backgroundstart{
+	background-image:url("images/studioghibli_backgroundstart.jpg");
+	background-repeat: no-repeat;
+	opacity: 0.8;
+}
+
+.background{
+	background-image:url("images/studioghibli_background.jpg");
+	opacity: 0.8;
+}
+
+.backgroundtwo{
+	background-image:url("images/studioghibli_backgroundtwo.jpg");
+	opacity: 0.8;
+
+}
+
+.backgroundthree{
+	background-image:url("images/studioghibli_backgroundthree.jpg");
+	opacity: 0.6;
+
+}
+
+.backgroundfour{
+	background-image:url("images/studioghibli_backgroundfour.jpg");
+	opacity: 0.8;
+
+}
+
+.backgroundfive{
+	background-image:url("images/studioghibli_backgroundfive.jpg");
+	opacity: 0.8;
+
+}
+
+.backgroundsix{
+	background-image:url("images/studioghibli_backgroundsix.jpg");
+	opacity: 0.8;
+	background-repeat: no-repeat;
+
+}
+
+.backgroundfinal{
+	background-image:url("images/studioghibli_backgroundfinal.jpg");
+	opacity: 0.8;
+	background-repeat: no-repeat;
+
+}
+
+/*---------Other------*/
 
 h1 {
 	text-align: center;
@@ -121,16 +201,11 @@ button.nextQ {
 .content {
 	position: relative;
 	width: 50%;
-	padding-left:auto;
-	padding-right:auto;
 	margin: 50px auto;
 	overflow: hidden;
 }
 
-#header-content {
-	text-align: center;
-	margin-left: auto;
-}
+
 
 
 .text-center {
@@ -144,6 +219,9 @@ button.nextQ {
 
 
 /*
+
+
+
 
 
 
