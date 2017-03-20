@@ -148,7 +148,6 @@ function startGame() {
      score = 0;
 	getQuestion();
      console.log("The game has begun.")
-     //$('#background').removeClass('hidden');
  	};
 
 //Get Question
@@ -163,9 +162,9 @@ function getQuestion() {
 //Move to Next Questions
 function moveToNextQuestion (){
      $(".nextQ").on('click',function() {
+          $('input[type=radio]').prop('checked',false); //this clears previously selected answer note!!!! .attr doesnt work anymore use .prop
           $(".submit-answer-button").attr("disabled", false);// turns submit button back on
           event.preventDefault(); //This stops the form from submitting
-          $('input[type=radio]').attr('checked',false); // this clears previously selected answer
           $('#quiz-right').addClass('hidden');
           $('#quiz-wrong').addClass('hidden');
           nextQuestion();
