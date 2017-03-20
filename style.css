@@ -144,24 +144,6 @@
 
 /*---------Other------*/
 
-h1 {
-	text-align: center;
-}
-
-h2 {
-	margin-top: 0;
-	text-align: center;
-}
-
-
-div, form {
-	box-sizing: border-box;
-}
-
-li{
-	list-style-type: none;
-}
-
 button {
 	background-color: grey;
 	color: #fff;
@@ -198,6 +180,26 @@ button.nextQ {
 	margin-right: 20px;
 }
 
+/*---------Other------*/
+
+h1 {
+	text-align: center;
+}
+
+h2 {
+	margin-top: 0;
+	text-align: center;
+}
+
+
+div, form {
+	box-sizing: border-box;
+}
+
+li{
+	list-style-type: none;
+}
+
 .content {
 	position: relative;
 	width: 50%;
@@ -218,18 +220,8 @@ button.nextQ {
 
 
 
-/*
-
-
-
-
-
-
 @media (max-width: 800px) {
 	.content {
 		width: 100%;
 	}
 }
-
-
-*/

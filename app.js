@@ -1,52 +1,3 @@
-//Page Load Event Listeners
-$(document).ready(function () {
-
-     //start page button
-     $('button.start-button').on('click',function(event){
-          $('#quiz-intro').addClass('hidden');
-          $('#quiz-form').removeClass('hidden');
-          $('#quiz-status').removeClass('hidden');
-          $('#header-content').addClass('hidden');
-          $('body').removeClass('backgroundstart');
-          $('body').addClass('background');//first background change
-          startGame();
-     });
-
-     // click next button to move to next question
-      moveToNextQuestion ();
-
-      // Click prev button to go back to the last question
-     previousQuestion();
-
-     //Progress Bar loading
-     runProgressbarforward();
-     runProgressbarbackward()
-
-
-     //Submitting and checking answers
-     $(".submit-answer-button").on('click',function() {
-          $(this).attr("disabled", true);
-          checkAnswer();
-          });
-
-     //Submit answers
-     $('button.answer-button').on('click',function(event){
-          $('#quiz-right').addClass('hidden');
-          $('#quiz-wrong').addClass('hidden');
-          $('#quiz-form').addClass('hidden');
-          $('#quiz-status').addClass('hidden');
-          $('#quiz-list').removeClass('hidden');
-     });
-
-     //Play Again
-     $(".reset-button").click(function() {
-          location.reload(true);
-     });
-
-});
-
-
-
 //state
 var questions = [
                     {
@@ -223,7 +174,7 @@ function checkAnswer() {
      if (questions.length === questionIndex + 1) {
                $('#correctA').text(score);
                $("#quiz-outoro").removeClass("hidden");
-              }
+          };
 	}
 
 //Background style change
@@ -254,3 +205,51 @@ function changeBackground(){
           $('body').addClass('backgroundfinal');
      }
 }
+
+
+//Page Load Event Listeners
+$(document).ready(function () {
+
+     //start page button
+     $('button.start-button').on('click',function(event){
+          $('#quiz-intro').addClass('hidden');
+          $('#quiz-form').removeClass('hidden');
+          $('#quiz-status').removeClass('hidden');
+          $('#header-content').addClass('hidden');
+          $('body').removeClass('backgroundstart');
+          $('body').addClass('background');//first background change
+          startGame();
+     });
+
+     // click next button to move to next question
+      moveToNextQuestion ();
+
+      // Click prev button to go back to the last question
+     previousQuestion();
+
+     //Progress Bar loading
+     runProgressbarforward();
+     runProgressbarbackward()
+
+
+     //Submitting and checking answers
+     $(".submit-answer-button").on('click',function() {
+          $(this).attr("disabled", true);
+          checkAnswer();
+          });
+
+     //Submit answers
+     $('button.answer-button').on('click',function(event){
+          $('#quiz-right').addClass('hidden');
+          $('#quiz-wrong').addClass('hidden');
+          $('#quiz-form').addClass('hidden');
+          $('#quiz-status').addClass('hidden');
+          $('#quiz-list').removeClass('hidden');
+     });
+
+     //Play Again
+     $(".reset-button").click(function() {
+          location.reload(true);
+     });
+
+});
