@@ -39,19 +39,8 @@ $(document).ready(function () {
      });
 
      //Play Again
-     $('.reset-button').on('click',function(){
-          totalQuestions = questions.length;
-          curQuestion = 0;
-          questionIndex = 0;
-          score = 0;
-          $('#quiz-status').removeClass('hidden');
-          $('#quiz-form').removeClass('hidden');
-          $('#quiz-outoro').addClass ('hidden');
-          $('#quiz-list').addClass('hidden');
-          $('#quiz-right').addClass('hidden');
-          $('#quiz-wrong').addClass('hidden');
-          startGame();
-          nextQuestion();
+     $(".reset-button").click(function() {
+          location.reload(true);
      });
 
 });
