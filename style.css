@@ -10,6 +10,8 @@
 	border-style: double;
 	text-align: center;
 	margin-left: auto;
+	padding: 20px;
+	margin: 10px;
 }
 
 /*---------Quiz Tracker------*/
@@ -59,7 +61,7 @@
 	padding-top: 30px;
 }
 
-/*---------Answer Submission Message------*/
+/*---------Answer Submission Message and class------*/
 
 #quiz-right{
 	background-color: white;
@@ -74,6 +76,7 @@
 	padding: 10px;
 	margin: 10px;
 }
+
 
 /*---------Quiz tally and final list answer------*/
 
