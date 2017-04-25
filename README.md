@@ -4,7 +4,7 @@
 
 ## Purpose: 
 
-A fun an interactive quiz testing a user's knowledge about Studio Ghibli films
+A fun and interactive quiz testing a user's knowledge about Studio Ghibli films
 
 ## Motivation:
 
